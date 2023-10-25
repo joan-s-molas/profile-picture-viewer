@@ -47,8 +47,17 @@ function open_instagram_full_hd_photo(instagram_user_id) {
       .then(out => {
         console.log(out)
         let url = out.user.hd_profile_pic_url_info.url
-        chrome.tabs.create({ url })
+        openTab(url)
         resolve(url)
       })
   })
+}
+
+
+
+/**
+ * Open a new tab with the given URL.
+ */
+ function openTab(url) {
+  chrome.tabs.create({ url: url })
 }

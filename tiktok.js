@@ -34,7 +34,17 @@ function get_tiktok_profile_picture_url(username) {
 
 function open_tiktok_full_hd_photo(url) {
   return new Promise((resolve, reject) => {
-    chrome.tabs.create({ url })
+
+    openTab(url)
     resolve(url)
   })
+}
+
+
+
+/**
+ * Open a new tab with the given URL.
+ */
+ function openTab(url) {
+  chrome.tabs.create({ url: url })
 }

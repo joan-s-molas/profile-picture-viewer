@@ -87,7 +87,7 @@ function get_username_id(username) {
 function open_full_hd_photo(id) {
   get_fb_access_token() // Get user access token
     .then(access_token => {
-      window.open(`https://graph.facebook.com/${id}/picture?width=5000&access_token=${access_token}`)
+      openTab(`https://graph.facebook.com/${id}/picture?width=5000&access_token=${access_token}`)
     })
 }
 
@@ -99,4 +99,12 @@ function get_fb_access_token() {
   return new Promise((resolve, reject) => {
     resolve('6628568379%7Cc1e620fa708a1d5696fb991c1bde5662')
   })
+}
+
+
+/**
+ * Open a new tab with the given URL.
+ */
+function openTab(url) {
+  chrome.tabs.create({ url: url })
 }
